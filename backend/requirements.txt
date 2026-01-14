@@ -1,0 +1,18 @@
+# ---- Backend Framework ----
+fastapi
+uvicorn
+python-multipart
+
+# ---- Core ML Stack (PINNED FOR STABILITY) ----
+numpy==1.26.4
+torch==2.2.2
+torchvision==0.17.2
+transformers==4.38.2
+pillow
+safetensors
+
+# ---- Computer Vision (SERVER SAFE) ----
+opencv-python-headless==4.9.0.80
+
+# ---- Utilities ----
+pandas
