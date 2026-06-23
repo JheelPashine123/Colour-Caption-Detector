@@ -5,15 +5,15 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     HF_HOME=/home/appuser/.cache/huggingface
 
-WORKDIR /app/backend
+WORKDIR /app
 
 RUN adduser --disabled-password --gecos "" appuser
 
-COPY backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
-COPY backend/ .
+COPY . .
 
 RUN chown -R appuser:appuser /app /home/appuser
 USER appuser
