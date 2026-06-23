@@ -78,68 +78,96 @@ No additional dataset or model training is required for color extraction.
 
 # 📦 Installation & Setup
 
-## 1️⃣ Clone the Repository
+## Option 1: Run with Docker Compose (Recommended)
+
+Make sure Docker Desktop is installed and running before using this option.
 
 ```bash
-git clone https://github.com/your-username/Image-Colour-Caption-Generator.git
-
-cd Image-Colour-Caption-Generator
+git clone https://github.com/JheelPashine123/Colour-Caption-Detector.git
+cd Colour-Caption-Detector
 ```
 
-## 2️⃣ Create a Virtual Environment (Recommended)
+Start the full application with one command:
 
 ```bash
-python -m venv venv
+docker compose up --build
 ```
 
-### Activate Virtual Environment
+Open the application:
 
-#### Windows
-
-```bash
-venv\Scripts\activate
+```text
+http://localhost:3000
 ```
 
-#### macOS / Linux
+The backend API runs on:
 
-```bash
-source venv/bin/activate
+```text
+http://localhost:8000
 ```
 
-## 3️⃣ Install Backend Dependencies
+To stop the application:
 
 ```bash
+docker compose down
+```
+
+> The first Docker run can take time because the backend installs the AI/ML dependencies and downloads the BLIP model.
+> If `docker compose` is not found, install Docker Desktop first and restart your terminal.
+
+---
+
+## Option 2: Run Manually
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/JheelPashine123/Colour-Caption-Detector.git
+cd Colour-Caption-Detector
+```
+
+### 2️⃣ Create and Activate the BLIP Environment
+
+```bash
+conda create -n blip_env python=3.10 -y
+conda activate blip_env
+pip install --upgrade pip
+```
+
+Install the main BLIP dependencies:
+
+```bash
+pip install torch torchvision transformers pillow
+```
+
+### 3️⃣ Install Backend Dependencies
+
+```bash
+cd backend
 pip install -r requirements.txt
 ```
 
-## 4️⃣ Install Frontend Dependencies
+Start the backend:
 
 ```bash
-cd frontend
-
-npm install
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## 5️⃣ Start the Frontend
-
-```bash
-npm run dev
-```
-
-## 6️⃣ Start the Backend
+### 4️⃣ Install and Start the Frontend
 
 Open a new terminal and run:
 
 ```bash
-python app.py
+cd frontend
+npm install
+npm start
 ```
 
-## 7️⃣ Open the Application
+### 5️⃣ Open the Application
 
 Visit:
 
 ```text
-http://localhost:5173
+http://localhost:3000
 ```
 
 Upload an image and generate:
@@ -147,6 +175,22 @@ Upload an image and generate:
 * 🖼️ AI-powered captions
 * 🎨 Dominant color palettes
 * 📋 HEX color codes
+
+When you are finished, deactivate the Conda environment:
+
+```bash
+conda deactivate
+```
+
+---
+
+## Docker Project Structure
+
+```text
+backend/Dockerfile      -> Backend FastAPI container
+frontend/Dockerfile     -> Frontend React container
+docker-compose.yml      -> Runs both services together
+```
 
 ---
 
