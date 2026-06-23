@@ -191,29 +191,6 @@ backend/Dockerfile      -> Backend FastAPI container
 frontend/Dockerfile     -> Frontend React container
 docker-compose.yml      -> Runs both services together
 ```
-
----
-
-# 📸 Demo
-
-## Caption Generation
-
-*Add Screenshot Here*
-
-## Color Palette Extraction
-
-*Add Screenshot Here*
-
----
-
-# 🌟 Use Cases
-
-* Content Creation
-* Social Media Caption Assistance
-* Color Palette Inspiration
-* Design Workflows
-* Image Analysis Applications
-
 ---
 
 # 🌍 Live Demo
